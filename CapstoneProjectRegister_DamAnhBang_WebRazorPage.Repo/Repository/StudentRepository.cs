@@ -8,46 +8,15 @@ using System.Threading.Tasks;
 
 namespace CapstoneProjectRegister_DamAnhBang_WebRazorPage.Repo.Repository
 {
-    public class StudentRepository : IStudent
+    public class StudentRepository : GenericRepository<Student>, IStudent
     {
-        public void AddStudent(Student student)
+        public StudentRepository(CapstoneProjectRegisterContext dbRContext) : base(dbRContext)
         {
-            try
-            {
-                using var context = new CapstoneProjectRegisterContext();
-                context.Students.Add(student);
-                context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
 
-        public Student GetStudent(int id)
+        public override Task<List<Student>> GetAllAsync()
         {
-            try
-            {
-                using var context = new CapstoneProjectRegisterContext();
-                return context.Students.SingleOrDefault(a => a.Id == id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public IEnumerable<Student> GetStudents()
-        {
-            try
-            {
-                using var context = new CapstoneProjectRegisterContext();
-                return context.Students.ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return base.GetAllAsync();
         }
     }
 }

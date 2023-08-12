@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace CapstoneProjectRegister_DamAnhBang_WebRazorPage.Repo.IRepository
 {
-    public interface IStudent
+    public interface IStudent:IGenericRepository<Student>
     {
-        IEnumerable<Student> GetStudents();
-        Student GetStudent(int id);
-        void AddStudent(Student student);
     }
 }

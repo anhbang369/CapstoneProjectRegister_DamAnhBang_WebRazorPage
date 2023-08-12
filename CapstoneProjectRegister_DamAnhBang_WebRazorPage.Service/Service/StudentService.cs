@@ -1,5 +1,6 @@
 ﻿using CapstoneProjectRegister_DamAnhBang_WebRazorPage.Repo.EntityModel;
 using CapstoneProjectRegister_DamAnhBang_WebRazorPage.Repo.IRepository;
+using CapstoneProjectRegister_DamAnhBang_WebRazorPage.Repo.Unito;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,17 @@ namespace CapstoneProjectRegister_DamAnhBang_WebRazorPage.Service.Service
     {
         private readonly IStudent _studentRepository;
 
-        public StudentService(IStudent studentRepository)
+        private readonly IUnitoWork unitoWork;
+
+        public StudentService(IStudent studentRepository, IUnitoWork unitoWork)
         {
             _studentRepository = studentRepository;
+            this.unitoWork = unitoWork;
         }
 
-        public void AddStudent(Student student)
+        public async Task<IEnumerable<Student>> GetAllStudentsAsync()
         {
-            _studentRepository.AddStudent(student);
-        }
-
-        public IEnumerable<Student> GetAllStudents()
-        {
-            return _studentRepository.GetStudents();
+            return await this.unitoWork.student1.GetAllAsync();
         }
 
     }

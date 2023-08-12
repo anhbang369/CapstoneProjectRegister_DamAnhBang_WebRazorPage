@@ -23,19 +23,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var students in StudentService.GetAllStudents())
+        @foreach (var student in await StudentService.GetAllStudentsAsync())
         {
             <tr>
-                <td>@students.Id</td>
-                <td>@students.Name</td>
-                <td>@students.Avatar</td>
-                <td>@students.Age</td>
-                <td>@students.Email</td>
-                <td>@students.Phone</td>
-                <td>@students.Address</td>
-                <td>@students.Fee</td>
-                <td>@students.Credit</td>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Avatar</td>
+                <td>@student.Age</td>
+                <td>@student.Email</td>
+                <td>@student.Phone</td>
+                <td>@student.Address</td>
+                <td>@student.Fee</td>
+                <td>@student.Credit</td>
             </tr>
         }
     </tbody>
+
 </table>
