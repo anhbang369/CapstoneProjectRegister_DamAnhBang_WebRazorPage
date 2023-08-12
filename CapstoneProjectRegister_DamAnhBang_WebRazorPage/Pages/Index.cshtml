@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@inject CapstoneProjectRegister_DamAnhBang_WebRazorPage.Service.Service.StudentService StudentService
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Fullname</th>
+            <th>Avater</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>fee</th>
+            <th>credit</th>
+            <!-- Thêm các cột khác tùy ý -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var students in StudentService.GetAllStudents())
+        {
+            <tr>
+                <td>@students.Id</td>
+                <td>@students.Name</td>
+                <td>@students.Avatar</td>
+                <td>@students.Age</td>
+                <td>@students.Email</td>
+                <td>@students.Phone</td>
+                <td>@students.Address</td>
+                <td>@students.Fee</td>
+                <td>@students.Credit</td>
+            </tr>
+        }
+    </tbody>
+</table>
